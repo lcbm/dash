@@ -1,0 +1,15 @@
+{
+  "buttons": [
+    {
+      "name": "Slack: Message Support",
+      "id": "78:e1:03:60:59:3b",
+      "action": "slack",
+      "slack": {
+        "webhook": "https://hooks.slack.com/services/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",
+        "username": "dash-button-bot",
+        "channel": "#amazon-dash-button",
+        "message": "Suporte Solicitado @ CESAR School: Sala 01!"
+      }
+    }
+  ]
+}
