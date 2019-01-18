@@ -1,0 +1,15 @@
+{
+  "iface": "wlp2s0",
+  "buttons": [
+    {
+      "owner": "Europa",
+      "mac": "78:e1:03:60:59:3b",
+      "url": "https://hooks.slack.com/services/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",
+      "data": {
+        "username": "dash-button-bot",  
+        "channel": "#amazon-dash-button",
+        "text": "Support requested @ CESAR School: Sala 01!"
+      }
+    }
+  ]
+}
