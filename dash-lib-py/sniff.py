@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from scapy.all import *
 import requests
 import time
@@ -14,10 +16,11 @@ def record_request(site, room):
   requests.post(MAGIC_FORM_URL, data)
 
 def arp_display(pkt):
-  if pkt[ARP].op == 1:
-    if pkt[ARP].hwsrc == MAC_ADDRESS:        
-      print("Device pressed w/ SHA: {} ~ SPA: {}").format(pkt[ARP].hwsrc, pkt[ARP].psrc)
-      record_request('CESAR School', 1)
+  if pkt.haslayer(ARP):
+    if pkt[ARP].op == 1:
+      if pkt[ARP].hwsrc == MAC_ADDRESS:        
+        print("Device pressed w/ SHA: {} ~ SPA: {}").format(pkt[ARP].hwsrc, pkt[ARP].psrc)
+        record_request('CESAR School', 1)
 
 while True:
   sniff(prn=arp_display, filter="arp", store=0, count=10)

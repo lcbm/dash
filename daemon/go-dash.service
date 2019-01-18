@@ -1,0 +1,22 @@
+# location: /lib/systemd/system/
+
+[Unit]
+Description=Go Dash service
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=10
+ExecStart=/home/cbmelo/knot/src/knot-dash-source/dash-lib-go/dash-lib-go
+
+PermissionsStartOnly=true
+ExecStartPre=/bin/mkdir -p /var/log/go-dash-service
+ExecStartPre=/bin/chown syslog:adm /var/log/go-dash-service
+ExecStartPre=/bin/chmod 755 /var/log/go-dash-service
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=go-dash-service
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,22 @@
+# location: /lib/systemd/system/
+
+[Unit]
+Description=Python Dash service
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=10
+ExecStart=/home/cbmelo/knot/src/knot-dash-source/dash-lib-py/sniff.py
+
+PermissionsStartOnly=true
+ExecStartPre=/bin/mkdir -p /var/log/py-dash-service
+ExecStartPre=/bin/chown syslog:adm /var/log/py-dash-service
+ExecStartPre=/bin/chmod 755 /var/log/py-dash-service
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=py-dash-service
+
+[Install]
+WantedBy=multi-user.target
