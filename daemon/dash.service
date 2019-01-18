@@ -1,0 +1,22 @@
+[Unit]
+Description=Dash service
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=10
+
+ExecStart=/home/cbmelo/knot/src/knot-dash-source/dash-lib-go/dash-lib-go
+WorkingDirectory=/home/cbmelo/knot/src/knot-dash-source/dash-lib-go
+
+PermissionsStartOnly=true
+ExecStartPre=/bin/mkdir -p /var/log/dashservice
+ExecStartPre=/bin/chown syslog:adm /var/log/dashservice
+ExecStartPre=/bin/chmod 755 /var/log/dashservice
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=dashservice
+
+[Install]
+WantedBy=multi-user.target
